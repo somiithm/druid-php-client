@@ -1,0 +1,11 @@
+{
+    "name": "som/druid-php-client",
+    "description": "druid querying library",
+    "authors": [
+        {
+            "name": "somiithm",
+            "email": "somiithm@gmail.com"
+        }
+    ],
+    "require": {}
+}
