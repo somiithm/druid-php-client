@@ -9,17 +9,15 @@
 namespace Druid;
 
 
-class TimeSeriesQuery extends Druid
+class TimeSeriesQuery extends AggregationQueries
 {
     public $queryType = "timeseries";
+    public $filter;
 
     public function __construct($dataSource,$granularity,array $intervals,array $aggregators , $filter)
     {
-        $this->intervals = $intervals;
-        $this->granularity = $granularity;
-        $this->aggregations = $aggregators;
         $this->filter = $filter;
-        parent::__construct($dataSource);
+        parent::__construct($dataSource,$granularity,$aggregators,$intervals);
     }
 
     public function setDescending(){
@@ -27,8 +25,7 @@ class TimeSeriesQuery extends Druid
         return $this;
     }
 
-    public function setPostAggregator(array $postAggregations){
-        $this->postAggregations = $postAggregations;
-        return $this;
+    public static function build($dataSource,$granularity,array $intervals,array $aggregators , $filter){
+        return new TimeSeriesQuery($dataSource,$granularity,$intervals,$aggregators , $filter);
     }
 }

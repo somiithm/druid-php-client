@@ -26,4 +26,8 @@ class TimeBoundaryQuery extends Druid
     public function addContext($context){
         $this->context = $context;
     }
+
+    public static function build($dataSource, $bound = null){
+        return new TimeBoundaryQuery($dataSource, $bound);
+    }
 }

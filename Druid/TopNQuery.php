@@ -9,7 +9,7 @@
 namespace Druid;
 
 
-class TopNQuery extends Druid
+class TopNQuery extends AggregationQueries
 {
     public $queryType = "topN";
     public $dimension;
@@ -22,12 +22,9 @@ class TopNQuery extends Druid
     public function __construct($dataSource, $dimension, $intervals, $granularity, $aggregations,$threshold, $metric)
     {
         $this->dimension = $dimension;
-        $this->intervals = $intervals;
-        $this->granularity = $granularity;
-        $this->aggregations = $aggregations;
         $this->threshold = $threshold;
         $this->metric = $metric;
-        parent::__construct($dataSource);
+        parent::__construct($dataSource,$granularity,$aggregations,$intervals);
     }
 
     public function addPostAggregation($postAggregation){
@@ -41,5 +38,7 @@ class TopNQuery extends Druid
         return $this;
     }
 
-
+    public static function build($dataSource, $dimension, $intervals, $granularity, $aggregations,$threshold, $metric){
+        return new TopNQuery($dataSource, $dimension, $intervals, $granularity, $aggregations,$threshold, $metric);
+    }
 }

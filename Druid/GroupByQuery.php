@@ -10,7 +10,7 @@ namespace Druid;
 
 
 
-class GroupByQuery extends Druid
+class GroupByQuery extends AggregationQueries
 {
     public $queryType = "groupBy";
     public $dimension;
@@ -21,10 +21,7 @@ class GroupByQuery extends Druid
     public function __construct($dataSource, $dimension, $granularity, $aggregations, $intervals)
     {
         $this->dimension = $dimension;
-        $this->granularity = $granularity;
-        $this->aggregations = $aggregations;
-        $this->intervals = $intervals;
-        parent::__construct($dataSource);
+        parent::__construct($dataSource,$granularity,$aggregations,$intervals);
     }
 
     public function addLimitSpec($limitSpec){
@@ -37,17 +34,14 @@ class GroupByQuery extends Druid
         return $this;
     }
 
-    public function addPostAggregation($postAggregation){
-        if(!isset($this->postAggregations)) $this->postAggregations = [];
-        $this->postAggregations[] = $postAggregation;
+
+
+    public function having($having){
+        $this->having = $having;
         return $this;
     }
 
-    public function addHaving($having){
-        //TODO
-    }
-
-    public function addContext($context){
-        //TODO
+    public static function build($dataSource, $dimension, $granularity, $aggregations, $intervals){
+        return new GroupByQuery($dataSource, $dimension, $granularity, $aggregations, $intervals);
     }
 }

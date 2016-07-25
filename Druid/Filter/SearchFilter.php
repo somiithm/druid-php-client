@@ -1,21 +1,24 @@
 <?php
-
 /**
  * Created by PhpStorm.
  * User: som
- * Date: 21/7/16
- * Time: 3:46 PM
+ * Date: 22/7/16
+ * Time: 7:12 PM
  */
+
 namespace Druid\Filter;
 
 
-class SelectorFilter extends Filter
+class SearchFilter extends Filter
 {
-    public $type = "selector";
+    public $type = "search";
+    public $dimension;
+    public $query;
 
-    public function __construct($dimension,$value){
+    public function __construct($dimension, $query)
+    {
         $this->dimension = $dimension;
-        $this->value = $value;
+        $this->query = $query;
     }
 
     public function addExtractionFn($extractionFn){

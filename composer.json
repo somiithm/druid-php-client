@@ -7,5 +7,10 @@
             "email": "somiithm@gmail.com"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "Druid\\": "Druid/"
+        }
+    },
     "require": {}
 }

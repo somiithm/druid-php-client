@@ -17,4 +17,8 @@ class DataSourceMetadataQuery extends Druid
     {
         parent::__construct($dataSource);
     }
+
+    public static function build($dataSource){
+        return new DataSourceMetadataQuery($dataSource);
+    }
 }
