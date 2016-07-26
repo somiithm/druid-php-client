@@ -9,9 +9,9 @@
 namespace Druid;
 
 
-class DataSourceMetadataQuery extends Druid
+class DataSourceMetadataQuery extends Query
 {
-    protected $queryType = "dataSourceMetaData";
+    public $queryType = "dataSourceMetadata";
 
     public function __construct($dataSource)
     {

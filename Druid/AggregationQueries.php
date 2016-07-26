@@ -9,7 +9,7 @@
 namespace Druid;
 
 
-abstract class AggregationQueries extends Druid
+abstract class AggregationQueries extends Query
 {
     public $intervals;
     public $granularity;

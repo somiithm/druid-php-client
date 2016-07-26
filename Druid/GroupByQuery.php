@@ -13,14 +13,14 @@ namespace Druid;
 class GroupByQuery extends AggregationQueries
 {
     public $queryType = "groupBy";
-    public $dimension;
+    public $dimensions;
     public $granularity;
     public $aggregations;
     public $intervals;
 
     public function __construct($dataSource, $dimension, $granularity, $aggregations, $intervals)
     {
-        $this->dimension = $dimension;
+        $this->dimensions = is_array($dimension) ? $dimension :  array($dimension);
         parent::__construct($dataSource,$granularity,$aggregations,$intervals);
     }
 

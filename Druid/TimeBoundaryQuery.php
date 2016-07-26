@@ -9,7 +9,7 @@
 namespace Druid;
 
 
-class TimeBoundaryQuery extends Druid
+class TimeBoundaryQuery extends Query
 {
     public $queryType = "timeBoundary";
 

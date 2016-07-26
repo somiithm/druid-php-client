@@ -10,7 +10,7 @@ namespace Druid\PostAggregator;
 
 class ConstantPostAggregator extends PostAggregator
 {
-    protected $type = "constant";
+    public $type = "constant";
 
     public function __construct($outputName,$value)
     {
